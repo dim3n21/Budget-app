@@ -3,31 +3,36 @@
 
 var BudgetController = (function() {
 
-  var Expenses = function(id, description, value) {
+  class Expenses {
+
+    constructor(id, description, value) {
     this.id = id;
     this.description = description;
     this.value = value;
     this.percentage = -1;
   }
 
-  Expenses.prototype.calcPercentage = function(totalIncome) {
+  calcPercentage(totalIncome) {
 
     if (totalIncome > 0) {
       this.percentage = Math.round((this.value / totalIncome) * 100);
     } else {
       this.percentage = -1;
     }
-  };
+  }
 
-  Expenses.prototype.getPercentage = function() {
+  getPercentage() {
     return this.percentage;
-  };
+  }
+};
 
-  var Income = function(id, description, value) {
+  class Income {
+  constructor(id, description, value) {
     this.id = id;
     this.description = description;
     this.value = value;
   }
+};
 
   var calculateTotal = function(type) {
     var sum = 0;
